@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="warning">
+    <span class="fa-sharp fa-solid fa-circle-exclamation"></span>
+    <span class="">Mật khẩu không trùng khớp!</span>
+  </div>
+
+  <div class="warningg">
+    <span class="fa-solid fa-triangle-exclamation"></span>
+    <span class="">Tài khoản đã tồn tại!</span>
+  </div>
+  <div class="success">
+    <span class="fa-solid fa-circle-check"></span>
+    <span class="">Thêm thành công!</span>
+  </div>
+  <h1 mat-dialog-title>Thêm Danh Mục</h1>
+  <div class="login-content">
+    <form [formGroup]="dataForm">
+      <div class="input-div one">
+        <div class="i">
+          <i class='bx bx-album' ></i>
+        </div>
+        <div class="div">
+          <input formControlName="catalogName" type="text" placeholder="Tên danh mục" class="input">
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="button" mat-dialog-actions>
+    <input   class=" btn" placeholder="Hủy" (click)="onNoClick()">
+    <input  class=" btn" placeholder="Thêm" (click)="onAddClick()">
+  </div>
+</div>
+
+
+

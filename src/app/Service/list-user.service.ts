@@ -18,4 +18,15 @@ export class ListUserService {
   deleteUser(id:number) {
     return this.httpClient.delete(`${environment.api_domain}/api/DeleteUser/${id}`)
   }
+
+
+  register(user: Users) {
+    return  this.httpClient.post<Users>(`${environment.api_domain}/api/registration`, user);
+  }
+
+  editUser(data:any, id: number) {
+    return this.httpClient.put<any>(`${environment.api_domain}/api/editUser/`+ id, data);
+  }
+
+
 }

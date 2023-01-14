@@ -1,0 +1,86 @@
+<link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+<div class="container">
+  <div class="warning">
+    <span class="fa-solid fa-triangle-exclamation"></span>
+    <span class="">Lỗi!</span>
+  </div>
+  <div class="success">
+    <span class="fa-solid fa-circle-check"></span>
+    <span class="">Thành Công!</span>
+  </div>
+  <h1 mat-dialog-title>Thêm Sản Phẩm</h1>
+  <div class="login-content">
+    <form [formGroup]="dataForm">
+      <div class="input-div one">
+        <div class="i">
+          <i class="fa-solid fa-dog"></i>
+        </div>
+        <div class="div">
+          <input formControlName="productName" type="text" placeholder="Tên thú cưng" class="input">
+        </div>
+      </div>
+
+      <div class="input-div pass">
+        <div class="i">
+          <i class="fa-solid fa-bandage"></i>
+        </div>
+        <div class="div">
+          <input type="text" formControlName="ageRange" id="email" placeholder="Độ Tuổi" class="input">
+        </div>
+      </div>
+
+
+      <div class="input-div pass">
+        <div class="i">
+          <i class="fa-solid fa-compact-disc"></i>
+        </div>
+        <select id="cars"  formControlName="catalogName" class="select" >
+          <option  class="option" [value]="item.catalogName"   *ngFor="let item of catalog">{{item.catalogName}}</option>
+        </select>
+      </div>
+
+
+
+
+      <div class="input-div pass">
+        <div class="i">
+          <i class="fa-solid fa-circle-dollar-to-slot"></i>
+        </div>
+        <div class="div" >
+          <input type="text"  formControlName="price"  placeholder="Giá" class="input">
+
+
+        </div>
+      </div>
+
+      <div class="input-div pass">
+        <div class="i">
+          <i class="fa-solid fa-comment"></i>
+        </div>
+        <div class="div">
+          <input type="text"  formControlName="description"  placeholder="Mô tả" class="input">
+        </div>
+      </div>
+
+      <div class="input-div pass">
+        <div class="i">
+          <i class="fa-solid fa-image"></i>
+        </div>
+        <div class="div" path="file">
+          <input type="file" multiple  #selectFile (change)="onFileSelected($event)"   placeholder="Image" class="input">
+        </div>
+<!--        <div *ngFor="let item of th.image">-->
+<!--          <img src="{{Path + item}}" alt="">-->
+<!--        </div>-->
+      </div>
+
+
+    </form>
+  </div>
+  <div class="button" mat-dialog-actions>
+    <input   class=" btn" placeholder="Hủy" (click)="onNoClick()">
+    <input  class=" btn" placeholder="Thêm" (click)="onAddClick()">
+  </div>
+</div>
+
+

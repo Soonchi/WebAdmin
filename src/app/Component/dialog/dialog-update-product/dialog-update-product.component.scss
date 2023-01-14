@@ -1,0 +1,125 @@
+.container {
+  @apply bg-white rounded-3xl flex flex-col justify-center items-center;
+  width: 500px;
+  font-size: 1.5rem;
+
+  .success {
+    width: 100%;
+    text-align: center;
+    display: none;
+    background-color: #54e37ab3;
+  }
+  .warning {
+    width: 100%;
+    text-align: center;
+    display: none;
+    background-color: #c91818b3;
+  }
+
+  .active {
+    animation: fade-in 0.5s linear;
+    display: block;
+  }
+
+  .login-content label{
+    margin: 15px 0;
+    color: #333;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+  }
+
+  .login-content .input-div{
+    position: relative;
+    display: grid;
+    grid-template-columns: 7% 93%;
+    padding: 5px 0;
+    font-size: 1.5rem;
+    .i {
+
+    }
+    .div {
+      @apply ml-5;
+      .input {
+        @apply rounded-xl;
+        border: 1px solid black;
+        padding-left: 10px;
+        height: 40px;
+        width: 300px;
+        font-size: 1rem;
+      }
+      ::placeholder {
+        font-size: 1rem;
+      }
+    }
+
+
+    .select {
+        @apply ml-5 rounded-xl;
+        border: 1px solid black;
+        padding-left: 10px;
+        height: 40px;
+        width: 300px;
+        font-size: 1rem;
+    }
+
+
+
+  }
+
+  .login-content .input-div.one{
+    margin-top: 0;
+  }
+
+  .login-content .input-div.pass{
+    @apply mt-5;
+  }
+
+  @mixin form-btn{
+    @apply text-center;
+
+    &:hover {
+      @apply bg-black;
+    }
+  }
+  .button {
+    @apply gap-5 flex flex-row justify-center items-center;
+
+    ::placeholder {
+      @apply text-black;
+    }
+    .btn {
+      @apply border-2 relative w-full rounded-full border-black p-1 inline-block mt-4 mb-4 cursor-pointer text-black overflow-hidden;
+      border-top-left-radius: 0;
+      font-size: 1.2rem;
+      z-index: 0;
+      width: 200px;
+
+      &::before {
+        @apply absolute top-0 left-0 h-full w-full bg-black;
+        content: '';
+        z-index: -1;
+        transition: .2s linear;
+        clip-path: circle(0% at 0% 5%);
+
+      }
+      &:hover::before {
+        clip-path: circle(100%);
+      }
+      &:hover::placeholder {
+        color: white;
+        font-weight: 100;
+      }
+    }
+
+    .btn {
+      @include form-btn();
+      @apply  font-semibold border-solid;
+      font-size: 1.2rem;
+    }
+  }
+
+}
+
+
+
+

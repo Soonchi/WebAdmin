@@ -1,8 +1,13 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
 <app-sildenav></app-sildenav>
 <div class="container">
-  <h2>Quản lí người dùng</h2>
-  <div class="home-section mat-elevation-z8">
+  <div class="tittle">
+    <h2>Quản Lí Người Dùng</h2>
+
+    <button class="btn" (click)="openDialogAdd()">+Add</button>
+  </div>
+
+<!--  <div class="home-section mat-elevation-z8">-->
     <table mat-table [dataSource]="dataSource">
 
       <!-- Position Column -->
@@ -19,7 +24,7 @@
 
       <!-- Weight Column -->
       <ng-container  matColumnDef="password">
-        <th class="center" mat-header-cell *matHeaderCellDef> Password </th>
+        <th class="center" mat-header-cell *matHeaderCellDef> Mật Khẩu </th>
         <td class="center" mat-cell  *matCellDef="let element"> {{element.password}} </td>
       </ng-container>
 
@@ -29,9 +34,9 @@
         <td class="center" mat-cell *matCellDef="let element"> {{element.email}} </td>
       </ng-container>
       <ng-container matColumnDef="action">
-        <th class="center" mat-header-cell *matHeaderCellDef> Hành động </th>
+        <th class="center" mat-header-cell *matHeaderCellDef> Hành Động </th>
         <td class="center" mat-cell *matCellDef="let element">
-          <i class="fa-solid fa-pen-to-square"></i>
+          <i class="fa-solid fa-pen-to-square" (click)="onEditClick(element)"></i>
           <i class="fa-solid fa-trash-can" (click)="hanldeDelete(element.id)"></i>
         </td>
       </ng-container>
@@ -44,7 +49,7 @@
                    showFirstLastButtons
                    aria-label="Select page of periodic elements">
     </mat-paginator>
-  </div>
+<!--  </div>-->
 
 
 </div>

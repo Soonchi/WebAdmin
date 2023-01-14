@@ -1,0 +1,75 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+<app-sildenav></app-sildenav>
+<div class="container">
+  <div class="tittle">
+    <h2>Quản Lí Sản Phẩm</h2>
+
+    <button class="btn"(click)="openDialogAdd()" >+Add</button>
+  </div>
+
+<!--  <div class="home-section mat-elevation-z8">-->
+    <table mat-table [dataSource]="dataSource">
+
+      <!-- Position Column -->
+      <ng-container matColumnDef="productId">
+        <th class="center" mat-header-cell *matHeaderCellDef> ID </th>
+        <td class="center" mat-cell *matCellDef="let element"> {{element.productId}} </td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="productName">
+        <th class="center" mat-header-cell *matHeaderCellDef> Tên </th>
+        <td class="center" mat-cell *matCellDef="let element"> {{element.productName}} </td>
+      </ng-container>
+
+      <!-- Weight Column -->
+      <ng-container  matColumnDef="ageRange">
+        <th class="center" mat-header-cell *matHeaderCellDef> Độ Tuổi </th>
+        <td class="center" mat-cell  *matCellDef="let element"> {{element.ageRange}} </td>
+      </ng-container>
+
+      <ng-container  matColumnDef="catalogName">
+        <th class="center" mat-header-cell *matHeaderCellDef> Danh Mục </th>
+        <td class="center" mat-cell  *matCellDef="let element"> {{element.catalogName}} </td>
+      </ng-container>
+
+      <ng-container  matColumnDef="image">
+        <th class="center edit" mat-header-cell *matHeaderCellDef > Hình Ảnh </th>
+        <td class="center"  mat-cell *matCellDef="let element"><img  src="{{Path + element.image}}" alt=""></td>
+      </ng-container>
+
+      <ng-container matColumnDef="price">
+        <th class="center" mat-header-cell *matHeaderCellDef> Giá </th>
+        <td class="center" mat-cell *matCellDef="let element"> {{element.price}} đ</td>
+      </ng-container>
+
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="description">
+        <th class="center" mat-header-cell *matHeaderCellDef> Mô tả </th>
+        <td class="center" mat-cell *matCellDef="let element"> {{element.description}} </td>
+      </ng-container>
+
+
+      <ng-container matColumnDef="action">
+        <th class="center" mat-header-cell *matHeaderCellDef> Hành Động </th>
+        <td class="center" mat-cell *matCellDef="let element">
+          <i class="fa-solid fa-pen-to-square" (click)="onEditClick(element)" ></i>
+          <i class="fa-solid fa-trash-can" (click)="hanldeDelete(element.productId)"></i>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                   showFirstLastButtons
+                   aria-label="Select page of periodic elements">
+    </mat-paginator>
+<!--  </div>-->
+
+
+</div>
+
+

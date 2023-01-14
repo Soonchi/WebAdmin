@@ -1,0 +1,50 @@
+<div class="container">
+
+  <div class="success">
+    <span class="fa-solid fa-circle-check"></span>
+    <span class="">Lưu thành công!</span>
+  </div>
+  <h1 mat-dialog-title>Thêm người dùng</h1>
+  <div class="login-content">
+    <form [formGroup]="dataForm">
+      <div class="input-div one">
+        <div class="i">
+          <i class="fas fa-user"></i>
+        </div>
+        <div class="div">
+          <input formControlName="username" type="text" placeholder="Tên tài khoản" class="input">
+        </div>
+      </div>
+      <small *ngIf="user && user.invalid && user.touched" class="text-red-600">*Tài khoản ít nhất 3 kí tự</small>
+
+      <div class="input-div pass">
+        <div class="i">
+          <i class="fa-solid fa-envelope"></i>
+        </div>
+        <div class="div">
+          <input type="email" formControlName="email" id="email" placeholder="Email" class="input">
+        </div>
+      </div>
+      <small *ngIf="email && email.invalid && email.touched" class="text-red-600">*Định dạng @gmail.com</small>
+
+
+      <div class="input-div pass">
+        <div class="i">
+          <i class="fas fa-lock"></i>
+        </div>
+        <div class="div">
+          <input type="password" formControlName="password" id="passwordForm" placeholder="Mật khẩu" class="input">
+        </div>
+      </div>
+      <small *ngIf="password && password.invalid && password.touched" class="text-red-600">*Mật khẩu ít nhất 6 kí tự</small>
+
+
+    </form>
+  </div>
+  <div class="button" mat-dialog-actions>
+    <input   class=" btn" placeholder="Hủy" (click)="onNoClick()" >
+    <input  class=" btn" placeholder="Lưu"  (click)="onSaveClick()">
+  </div>
+</div>
+
+
