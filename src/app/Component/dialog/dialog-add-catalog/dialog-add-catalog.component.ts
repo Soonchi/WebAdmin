@@ -19,7 +19,7 @@ dataForm!: FormGroup;
 
   ngOnInit(): void {
         this.dataForm = this.formBuild.group({
-          catalogName: ''
+          name: ''
         })
     }
 
@@ -30,7 +30,8 @@ dataForm!: FormGroup;
   onAddClick() {
     const success = document.getElementsByClassName('success')[0] as HTMLElement;
     const warningg = document.getElementsByClassName('warningg')[0] as HTMLElement;
-    const catalog = this.dataForm.value as Catalog;
+    const catalog = this.dataForm.value;
+    console.log(catalog)
       this.catalogService.addCatalog(catalog).subscribe(res => {
         success.classList.add('active')
         setTimeout(() => {

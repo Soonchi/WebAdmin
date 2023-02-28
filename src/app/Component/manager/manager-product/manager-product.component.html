@@ -13,13 +13,13 @@
       <!-- Position Column -->
       <ng-container matColumnDef="productId">
         <th class="center" mat-header-cell *matHeaderCellDef> ID </th>
-        <td class="center" mat-cell *matCellDef="let element"> {{element.productId}} </td>
+        <td class="center" mat-cell *matCellDef="let element"> {{element.id}} </td>
       </ng-container>
 
       <!-- Name Column -->
       <ng-container matColumnDef="productName">
         <th class="center" mat-header-cell *matHeaderCellDef> Tên </th>
-        <td class="center" mat-cell *matCellDef="let element"> {{element.productName}} </td>
+        <td class="center" mat-cell *matCellDef="let element"> {{element.name}} </td>
       </ng-container>
 
       <!-- Weight Column -->
@@ -30,7 +30,7 @@
 
       <ng-container  matColumnDef="catalogName">
         <th class="center" mat-header-cell *matHeaderCellDef> Danh Mục </th>
-        <td class="center" mat-cell  *matCellDef="let element"> {{element.catalogName}} </td>
+        <td class="center" mat-cell  *matCellDef="let element"> {{element.categoryName}} </td>
       </ng-container>
 
       <ng-container  matColumnDef="image">
@@ -38,16 +38,21 @@
         <td class="center"  mat-cell *matCellDef="let element"><img  src="{{Path + element.image}}" alt=""></td>
       </ng-container>
 
+      <ng-container matColumnDef="quantity">
+        <th class="center" mat-header-cell *matHeaderCellDef> Số lượng </th>
+        <td class="center" mat-cell *matCellDef="let element"> {{element.quantity}} </td>
+      </ng-container>
+
       <ng-container matColumnDef="price">
         <th class="center" mat-header-cell *matHeaderCellDef> Giá </th>
-        <td class="center" mat-cell *matCellDef="let element"> {{element.price}} đ</td>
+        <td class="center" mat-cell *matCellDef="let element"> {{convertNumber(element.price)}} VND</td>
       </ng-container>
 
 
       <!-- Symbol Column -->
       <ng-container matColumnDef="description">
         <th class="center" mat-header-cell *matHeaderCellDef> Mô tả </th>
-        <td class="center" mat-cell *matCellDef="let element"> {{element.description}} </td>
+        <td class="center limittext" mat-cell *matCellDef="let element"> {{element.description}} </td>
       </ng-container>
 
 
@@ -55,7 +60,7 @@
         <th class="center" mat-header-cell *matHeaderCellDef> Hành Động </th>
         <td class="center" mat-cell *matCellDef="let element">
           <i class="fa-solid fa-pen-to-square" (click)="onEditClick(element)" ></i>
-          <i class="fa-solid fa-trash-can" (click)="hanldeDelete(element.productId)"></i>
+          <i class="fa-solid fa-trash-can" (click)="hanldeDelete(element.id)"></i>
         </td>
       </ng-container>
 

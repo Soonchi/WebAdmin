@@ -1,14 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, NgForm, Validators} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
 import {MatDialogRef} from "@angular/material/dialog";
 
 import {ProductService} from "../../../Service/product.service";
-import {Product} from "../../../Models/product";
 import {Catalog} from "../../../Models/Catalog";
 import {CatalogService} from "../../../Service/catalog.service";
-import { DomSanitizer } from '@angular/platform-browser';
-import {FileHandle} from "../../../Models/file-handle";
-import {HttpClient} from "@angular/common/http";
+
 
 
 
@@ -23,6 +20,8 @@ export class DialogAddProductComponent implements OnInit {
   file!: File
   image!: string;
 
+  Path = 'localhost://3000/'
+
 
 
 
@@ -30,16 +29,16 @@ export class DialogAddProductComponent implements OnInit {
   constructor(private dialogRef: MatDialogRef<DialogAddProductComponent>,
               private productService: ProductService,
               private formBuilder: FormBuilder,
-              private catalogService: CatalogService,
-              private sanitizer: DomSanitizer) {
+              private catalogService: CatalogService) {
   }
 
   ngOnInit() {
     this.dataForm = this.formBuilder.group({
-      productName: '',
-      catalogName: '',
+      name: '',
       ageRange: '',
+      categoryName: '',
       price: '',
+      quantity: '',
       description: '',
     })
 
@@ -64,14 +63,14 @@ export class DialogAddProductComponent implements OnInit {
     const success = document.getElementsByClassName('success')[0] as HTMLElement;
     const warningg = document.getElementsByClassName('warningg')[0] as HTMLElement;
     const formData = new FormData();
-    formData.append('productName', this.dataForm.value.productName);
-    formData.append('catalogName', this.dataForm.value.catalogName);
+    formData.append('name', this.dataForm.value.name);
+    formData.append('categoryName', this.dataForm.value.categoryName);
     formData.append('ageRange', this.dataForm.value.ageRange);
     formData.append('price', this.dataForm.value.price);
     formData.append('description', this.dataForm.value.description);
+    formData.append('quantity', this.dataForm.value.quantity);
     formData.append('image', this.image);
     formData.append('file', this.file);
-
       this.productService.addProduct(formData).subscribe(res => {
         success.classList.add('active')
         setTimeout(() => {

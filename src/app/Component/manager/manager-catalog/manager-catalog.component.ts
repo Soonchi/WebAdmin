@@ -32,16 +32,18 @@ export class ManagerCatalogComponent implements OnInit {
   }
 
   getAllcatalogs() {
-    const res = this.catalogService.getListCatalog();
-    res.subscribe(report => this.dataSource.data = report as unknown as Catalog[])
+    this.catalogService.getListCatalog().subscribe(data => {
+      this.dataSource.data = data;
+      console.log(this.dataSource.data);
+    })
   }
 
   openDialogAdd() {
     this.dialog.open(DialogAddCatalogComponent)
   }
 
-  hanldeDelete(catalogId: number) {
-    this.catalogService.deleteCatalog(catalogId).subscribe(res => {
+  hanldeDelete(id: number) {
+    this.catalogService.deleteCatalog(id).subscribe(res => {
       this.getAllcatalogs();
     } )
   }

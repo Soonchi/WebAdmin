@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  api_domain: 'http://localhost:2807',
+  api_domain: 'http://localhost:8000',
   signalr_domain: 'https://localhost:5001'
 };
 

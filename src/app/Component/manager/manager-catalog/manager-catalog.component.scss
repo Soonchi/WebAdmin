@@ -1,8 +1,7 @@
 .container {
   margin-left: 78px;
-  @apply text-center justify-between h-screen ;
+  @apply text-center justify-between w-auto h-screen ;
   background: #E4E9F7;
-  width: 100%;
   .tittle {
     @apply flex justify-between items-center;
 

@@ -8,7 +8,7 @@ import { SildenavComponent } from './Layout/sildenav/sildenav.component';
 import { ManagerUserComponent } from './Component/manager/manager-user/manager-user.component';
 import {MatTableModule} from "@angular/material/table";
 import {MatPaginatorModule} from "@angular/material/paginator";
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatButtonModule} from "@angular/material/button";
@@ -24,6 +24,12 @@ import { ManagerProductComponent } from './Component/manager/manager-product/man
 import { DialogAddProductComponent } from './Component/dialog/dialog-add-product/dialog-add-product.component';
 import {MatSelectModule} from "@angular/material/select";
 import { DialogUpdateProductComponent } from './Component/dialog/dialog-update-product/dialog-update-product.component';
+import {LoginComponent} from "./Component/login/login.component";
+import { ManagerOrderComponent } from './Component/manager/manager-order/manager-order.component';
+import {UserService} from "./Service/user.service";
+import {AuthGuard} from "./Auth/auth.guard";
+import {AuthInterceptor} from "./Auth/auth.interceptor";
+import { DialogUpdateStatusComponent } from './Component/dialog/dialog-update-status/dialog-update-status.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +43,10 @@ import { DialogUpdateProductComponent } from './Component/dialog/dialog-update-p
     DialogUpateCatalogComponent,
     ManagerProductComponent,
     DialogAddProductComponent,
-    DialogUpdateProductComponent
+    DialogUpdateProductComponent,
+    LoginComponent,
+    ManagerOrderComponent,
+    DialogUpdateStatusComponent
   ],
   imports: [
     BrowserModule,
@@ -54,7 +63,15 @@ import { DialogUpdateProductComponent } from './Component/dialog/dialog-update-p
     MatInputModule,
     DialogModule,
   ],
-  providers: [],
+  providers: [
+    AuthGuard,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    },
+    UserService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

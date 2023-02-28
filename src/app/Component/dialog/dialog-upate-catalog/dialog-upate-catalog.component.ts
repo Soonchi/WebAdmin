@@ -22,7 +22,7 @@ export class DialogUpateCatalogComponent implements OnInit {
   ngOnInit(): void {
     this.dataForm = this.formBuild.group({
 
-      catalogName: ''
+      name: ''
     })
 
     if(this.editData) {
@@ -38,8 +38,8 @@ export class DialogUpateCatalogComponent implements OnInit {
 
     const success = document.getElementsByClassName('success')[0] as HTMLElement;
     const warningg = document.getElementsByClassName('warningg')[0] as HTMLElement;
-    const catalog = this.dataForm.value as Catalog;
-    this.catalogService.updateCatalog(catalog, this.editData.catalogId).subscribe(res => {
+    const catalog = this.dataForm.value;
+    this.catalogService.updateCatalog(catalog, this.editData.id).subscribe(res => {
       success.classList.add('active')
       setTimeout(() => {
         success.classList.remove('active')

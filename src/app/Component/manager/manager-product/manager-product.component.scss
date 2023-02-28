@@ -84,9 +84,17 @@
 
     .center {
       @apply text-center;
-      width: 100px;
+      width: 200px;
       heigt: 100px;
     }
+
+  .limittext {
+    display: -webkit-box;
+    -webkit-line-clamp:7;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
   //}
 
 }

@@ -3,4 +3,7 @@ export class Users {
   username!: string;
   password!: string;
   email!: string;
+  accessToken!: string;
+  roles!: [];
+
 }

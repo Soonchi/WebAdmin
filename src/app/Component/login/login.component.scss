@@ -1,0 +1,298 @@
+
+
+
+.wave{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  height: 100%;
+  z-index: -1;
+}
+
+.container{
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap :7rem;
+  padding: 0 2rem;
+}
+
+.img{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.login-content{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: center;
+}
+
+.img img{
+  width: 500px;
+}
+
+form{
+  width: 360px;
+}
+
+.title {
+  @apply text-black mt-5 mb-5;
+  font-size: 2.3rem;
+  font-weight: bold;
+}
+
+.login-content img{
+  height: 110px;
+  margin-left: 12rem;
+  @apply  rounded-full;
+}
+
+.login-content label{
+  margin: 15px 0;
+  color: #333;
+  text-transform: uppercase;
+  font-size: 1rem;
+}
+
+.login-content .input-div{
+  position: relative;
+  display: grid;
+  grid-template-columns: 7% 93%;
+  margin: 25px 0;
+  padding: 5px 0;
+  border-bottom: 2px solid #d9d9d9;
+}
+
+.login-content .input-div.one{
+  margin-top: 0;
+}
+
+.i{
+  color: #d9d9d9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+}
+
+.i i{
+  transition: .3s;
+}
+
+.input-div > div{
+  position: relative;
+  height: 45px;
+  ::placeholder {
+    font-size: 1.5rem;
+  }
+
+}
+
+.input-div > div > h5{
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #999;
+  font-size: 18px;
+  transition: .3s;
+}
+
+.input-div:before, .input-div:after{
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  width: 0%;
+  height: 2px;
+  background-color: #38d39f;
+  transition: .4s;
+}
+
+.input-div:before{
+  right: 50%;
+}
+
+.input-div:after{
+  left: 50%;
+}
+
+.input-div.focus:before, .input-div.focus:after{
+  width: 50%;
+}
+
+.input-div.focus > div > h5{
+  top: -5px;
+  font-size: 15px;
+}
+
+.input-div.focus > .i > i{
+  color: #38d39f;
+}
+
+.input-div > div > input{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  background: none;
+  padding: 0.5rem 0.7rem;
+  font-size: 1.6rem;
+  color: #555;
+  font-family: 'poppins', sans-serif;
+}
+
+.input-div.pass{
+  margin-bottom: 4px;
+}
+
+a{
+  display: block;
+  text-align: right;
+  text-decoration: none;
+  color: #999;
+  font-size: 0.9rem;
+  transition: .3s;
+}
+
+a:hover{
+  color: #38d39f;
+}
+
+
+
+
+
+@media screen and (max-width: 1050px){
+  .container{
+    grid-gap: 5rem;
+  }
+}
+
+@media screen and (max-width: 1000px){
+  form{
+    width: 290px;
+  }
+
+  .login-content label{
+    font-size: 1rem;
+    margin: 8px 0;
+  }
+
+  .img img{
+    width: 400px;
+  }
+}
+
+a {
+  font-size: 1.5rem;
+
+}
+
+.register {
+  h2 {
+    @apply flex justify-between;
+    font-size: 1.5rem;
+
+    a{
+      @apply inline-block;
+      font-size: 1.5rem;
+
+    }
+  }
+}
+
+.success {
+  @apply p-3 h-20  inline-block rounded-2xl mt-24 absolute hidden;
+  width: 25%;
+  font-size: 2rem;
+  background-color:#54e37ab3;
+  transform: translateX(295%);
+  animation: fade-in 0.5 linear;
+  span {
+    @apply mr-3;
+  }
+}
+
+.warning {
+  @apply p-3 h-20  inline-block rounded-2xl mt-24 absolute hidden;
+  width: 30%;
+  font-size: 2rem;
+  background-color: #c91818b3;
+  transform: translateX(234%);
+
+  span {
+    @apply mr-3;
+  }
+}
+
+.active {
+  animation: fade-in 0.5s linear;
+  display: block;
+}
+
+@media screen and (max-width: 900px){
+  .container{
+    grid-template-columns: 1fr;
+  }
+
+  .img{
+    display: none;
+  }
+
+  .wave{
+    display: none;
+  }
+
+  .login-content{
+    justify-content: center;
+  }
+}
+
+@mixin form-btn{
+  @apply text-center;
+
+  &:hover {
+    @apply bg-black;
+  }
+}
+.btn {
+  @apply border-2 relative w-full rounded-full border-black p-1 inline-block mt-4 mb-4 cursor-pointer text-black overflow-hidden;
+  @apply relative;
+  border-top-left-radius: 0;
+  font-size: 1.5rem;
+  z-index: 0;
+
+
+  &::before {
+    @apply absolute top-0 left-0 h-full w-full bg-black;
+    content: '';
+    z-index: -1;
+    transition: .2s linear;
+    clip-path: circle(0% at 0% 5%);
+  }
+  &:hover::before {
+    clip-path: circle(100%);
+  }
+  &:hover {
+    color: white;
+  }
+}
+
+.btn {
+  @include form-btn();
+  @apply  font-semibold border-solid;
+  font-size: 2rem;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+}

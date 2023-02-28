@@ -1,0 +1,37 @@
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500;600&display=swap" rel="stylesheet">
+
+<div class="container">
+
+
+  <div class="warning">
+    <span class="fa-solid fa-triangle-exclamation"></span>
+    <span class="">Lỗi!</span>
+  </div>
+  <div class="success">
+    <span class="fa-solid fa-circle-check"></span>
+    <span class="">Thành Công!</span>
+  </div>
+  <h1>Cập nhật trạng thái đơn hàng</h1>
+  <div class="login-content">
+    <form [formGroup]="dataForm">
+      <div class="input-div one">
+        <div class="i">
+          Trạng thái đơn hàng:
+        </div>
+        <div class="div">
+          <select formControlName="status" class="select">
+            <option class="option" *ngFor="let item of listStatus">{{item}}</option>
+          </select>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="button" *ngFor="let item of orderDetails">
+    <input   class=" btn" placeholder="Hủy" (click)="onNoClick()">
+    <input  class=" btn" placeholder="Thêm" (click)="onSaveClick(item.id)" >
+  </div>
+</div>
+
+
+
+

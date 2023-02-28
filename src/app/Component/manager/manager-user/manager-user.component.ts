@@ -15,7 +15,7 @@ import {DialogUpdateUserComponent} from "../../dialog/dialog-update-user/dialog-
 })
 export class ManagerUserComponent implements OnInit {
   ELEMENT_DATA: Users[] = [];
-  displayedColumns: string[] = ['id', 'username', 'password', 'email','action'];
+  displayedColumns: string[] = ['id', 'username', 'password','action'];
   dataSource = new MatTableDataSource<Users>(this.ELEMENT_DATA);
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
@@ -31,8 +31,10 @@ ngOnInit() {
 
 
 getListUser() {
-  let resp = this.userService.getListUsers();
-  resp.subscribe(report => this.dataSource.data = report as unknown as Users[])
+  this.userService.getListUsers().subscribe((data:any) => {
+    this.dataSource.data = data;
+    console.log(this.dataSource.data);
+  })
 }
 
 hanldeDelete(id: number) {

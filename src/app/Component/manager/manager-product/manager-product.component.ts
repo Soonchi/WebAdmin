@@ -20,7 +20,7 @@ import {DialogUpdateProductComponent} from "../../dialog/dialog-update-product/d
 })
 export class ManagerProductComponent implements OnInit {
   ELEMENT_DATA: Product[] = [];
-  displayedColumns: string[] = ['productId', 'productName','ageRange','catalogName','image','price', 'description' ,'action'];
+  displayedColumns: string[] = ['productId', 'productName','ageRange','catalogName','image','quantity','price', 'description' ,'action'];
   dataSource = new MatTableDataSource<Product>(this.ELEMENT_DATA);
   @ViewChild(MatPaginator) paginator!: MatPaginator
 
@@ -39,16 +39,25 @@ export class ManagerProductComponent implements OnInit {
   }
 
   getAllProduct() {
-    const res = this.productService.getListProducts();
-    res.subscribe(report => this.dataSource.data = report as unknown as Product[])
+    this.productService.getListProducts().subscribe(data => {
+      this.dataSource.data = data;
+      console.log(this.dataSource.data);
+    })
   }
 
+  convertNumber(s: any) {
+    if(typeof s == "number") {
+      let tmp = s.toString();
+      return tmp.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+    }
+    return s;
+  }
   openDialogAdd() {
     this.dialog.open(DialogAddProductComponent)
   }
 
-  hanldeDelete(productId: number) {
-    this.productService.deleteProduct(productId).subscribe(res => {
+  hanldeDelete(id: number) {
+    this.productService.deleteProduct(id).subscribe(res => {
       this.getAllProduct();
     } )
   }

@@ -16,7 +16,7 @@
           <i class="fa-solid fa-dog"></i>
         </div>
         <div class="div">
-          <input formControlName="productName" type="text" placeholder="Tên thú cưng" class="input">
+          <input formControlName="name" type="text" placeholder="Tên thú cưng" class="input">
         </div>
       </div>
 
@@ -34,20 +34,13 @@
         <div class="i">
           <i class="fa-solid fa-compact-disc"></i>
         </div>
-        <select id="cars"  formControlName="catalogName" class="select">
-          <option  class="option" [value]="item.catalogId"  (change)="onOption($event)"  *ngFor="let item of catalog">{{item.catalogName}}</option>
+        <select id="cars"  formControlName="categoryName" class="select">
+          <option  class="option" [value]="item.id"  (change)="onOption($event)"  *ngFor="let item of catalog">{{item.name}}</option>
         </select>
       </div>
 
 
-      <div class="input-div pass">
-        <div class="i">
-          <i class="fa-solid fa-image"></i>
-        </div>
-        <div class="div">
-          <input type="text"  formControlName="image"  class="input">
-        </div>
-      </div>
+
 
       <div class="input-div pass">
         <div class="i">
@@ -64,6 +57,15 @@
         </div>
         <div class="div">
           <input type="text"  formControlName="description"  placeholder="Mô tả" class="input">
+        </div>
+      </div>
+
+      <div class="input-div pass">
+        <div class="i">
+          <i class="fa-solid fa-image"></i>
+        </div>
+        <div class="div" path="file">
+          <input type="file" multiple  (change)="onFileSelected($event)"  #selectFile placeholder="image" class="input">
         </div>
       </div>
     </form>

@@ -1,0 +1,46 @@
+
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+<img class="wave" src="./assets/img/login/wavenew.png">
+<div class="warning">
+  <span class="fa-sharp fa-solid fa-circle-exclamation"></span>
+  <span class="">Tài khoản hoặc mật khẩu không chính xác!</span>
+</div>
+<div class="success">
+  <span class="fa-solid fa-circle-check"></span>
+  <span class="">Đăng nhập thành công!</span>
+</div>
+<div class="container">
+  <div class="img">
+    <img src="./assets/img/login/undraw_welcome_cats_thqn.svg">
+  </div>
+  <div class="login-content">
+    <form #loginForm = "ngForm" (ngSubmit)="login(loginForm)">
+      <img src="./assets/img/login/logonew-removebg-preview.png">
+      <h2 class="title">Welcome to PetShop</h2>
+      <div class="input-div one">
+        <div class="i">
+          <i class="fas fa-user"></i>
+        </div>
+        <div class="div" >
+          <input type="text" ngModel name="username" id="username" placeholder="Tên tài khoản" class="input">
+        </div>
+      </div>
+
+      <div class="input-div pass">
+        <div class="i">
+          <i class="fas fa-lock"></i>
+        </div>
+        <div class="div">
+          <input type="password"  ngModel name="password" id="password" placeholder="Mật khẩu" class="input">
+        </div>
+      </div>
+      <a href="#">Quên mật khẩu?</a>
+      <input type="submit" class="btn"  value="Đăng nhập">
+      <div class="register">
+        <h2>Bạn chưa có tài khoản?<a href="" routerLink="/register">Đăng kí ngay</a></h2>
+      </div>
+    </form>
+  </div>
+
+</div>

@@ -18,20 +18,20 @@ export class ProductService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getListProducts(): Observable<Product> {
-    return this.httpClient.get<Product>(`${environment.api_domain}/api/getAllProduct`)
+  getListProducts(): Observable<any> {
+    return this.httpClient.get<any>(`${environment.api_domain}/api/product/getAll`)
   }
 
   addProduct(product: any){
 
-    return this.httpClient.post<any>(`${environment.api_domain}/api/addProduct`, product)
+    return this.httpClient.post<any>(`${environment.api_domain}/api/product/add`, product)
   }
 
-  deleteProduct(productId: number) {
-    return this.httpClient.delete(`${environment.api_domain}/api/deleteProduct/${productId}`)
+  deleteProduct(id: number) {
+    return this.httpClient.delete(`${environment.api_domain}/api/product/delete/${id}`)
   }
 
-  updateProduct(data:any, productId: number) {
-    return this.httpClient.put<any>(`${environment.api_domain}/api/editProduct/`+ productId, data)
+  updateProduct( data:any) {
+    return this.httpClient.put<any>(`${environment.api_domain}/api/product/update`, data)
   }
 }

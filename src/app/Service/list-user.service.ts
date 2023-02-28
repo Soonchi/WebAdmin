@@ -12,7 +12,7 @@ export class ListUserService {
   constructor(private httpClient: HttpClient) {}
 
   getListUsers(): Observable<Users> {
-    return this.httpClient.get<Users>(`${environment.api_domain}/api/getListUser`)
+    return this.httpClient.get<Users>(`${environment.api_domain}/api/auth/getListUser`)
   }
 
   deleteUser(id:number) {
@@ -20,8 +20,8 @@ export class ListUserService {
   }
 
 
-  register(user: Users) {
-    return  this.httpClient.post<Users>(`${environment.api_domain}/api/registration`, user);
+  register(user: any) {
+    return  this.httpClient.post<any>(`${environment.api_domain}/api/auth/registry`, user);
   }
 
   editUser(data:any, id: number) {
